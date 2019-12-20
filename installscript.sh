@@ -10,7 +10,8 @@ rm -rf "$HOME"/.oh-my-zsh
 curl -L https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 
 # Install PowerLevel10k theme
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME"/.oh-my-zsh/custom/themes/powerlevel10k
+ln -sf "$HOME"/.dotfiles/shell/.p10k.zsh "$HOME"/.p10k.zsh
 
 # Add global gitignore
 ln -sf "$HOME"/.dotfiles/shell/.global-gitignore "$HOME"/.global-gitignore
@@ -28,6 +29,10 @@ echo '----------------'
 echo install homebrew
 sudo rm -rf /usr/local/Cellar /usr/local/.git && brew cleanup
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+echo 'Install GIT'
+echo '----------------'
+brew install git
 
 echo 'Install composer'
 echo '----------------'
