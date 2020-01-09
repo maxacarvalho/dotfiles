@@ -1,19 +1,15 @@
 # Switch PHP versions
 phpv() {
     valet stop
-    brew unlink php@7.0 php@7.1 php@7.2 php@7.3 php@7.4
-    brew link --force --overwrite $1
-    brew services start $1
-    composer global update
-    rm -f ~/.config/valet/valet.sock
-    valet install
+    brew unlink php@7.0 php@7.2 php@7.3 php
+    brew link --force --overwrite "$1"
+    valet start
 }
 
 alias php70="phpv php@7.0"
-alias php71="phpv php@7.1"
 alias php72="phpv php@7.2"
 alias php73="phpv php@7.3"
-alias php74="phpv php@7.4"
+alias php74="phpv php"
 
 
 # Create a new directory and enter it
@@ -37,24 +33,6 @@ function phpserver() {
 	local ip=$(ipconfig getifaddr en0)
 	sleep 2 && open "http://${ip}:${port}/" &
 	php -S "${ip}:${port}"
-}
-
-# All the dig info
-function digga() {
-	dig +nocmd "$1" any +multiline +noall +answer
-}
-
-#shortcut voor zhs quick-look command
-function ql() {
-   quick-look "$1"
-}
-
-archive () {
-   zip -r "$1".zip -i "$1" ;
-}
-
-function removehost() {
-   ssh-keygen -R "$1"
 }
 
 function weather() {

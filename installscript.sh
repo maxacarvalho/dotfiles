@@ -9,9 +9,7 @@ echo '-----------------'
 rm -rf "$HOME"/.oh-my-zsh
 curl -L https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 
-# Install PowerLevel10k theme
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME"/.oh-my-zsh/custom/themes/powerlevel10k
-ln -sf "$HOME"/.dotfiles/shell/.p10k.zsh "$HOME"/.p10k.zsh
+git clone https://github.com/lukechilds/zsh-nvm "$HOME"/.oh-my-zsh/custom/plugins/zsh-nvm
 
 # Add global gitignore
 ln -sf "$HOME"/.dotfiles/shell/.global-gitignore "$HOME"/.global-gitignore
@@ -46,10 +44,6 @@ echo 'Install wget'
 echo '------------'
 brew install wget
 
-echo 'Install hub'
-echo '-----------'
-brew install hub
-
 echo 'Install ack'
 echo '-----------'
 brew install ack
@@ -62,16 +56,13 @@ echo 'Install thefuck'
 echo '-----------'
 brew install thefuck
 
-echo 'Install some nice quicklook plugins'
-echo '-----------------------------------'
-brew cask install --force qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv webp-quicklook suspicious-package
-
 echo 'Install php'
 echo '-----------'
 brew tap exolnet/homebrew-deprecated
 brew install php@7.0
 #brew install php@7.1
 brew install php@7.2
+brew install php@7.3
 brew install php@7.4
 
 echo 'Install imagemagick'
@@ -107,6 +98,15 @@ echo 'Install mysql'
 echo '-------------'
 brew install mysql@5.7
 brew services start mysql@5.7
+
+echo 'Install redis'
+echo '-------------'
+brew services start redis
+brew install redis
+
+echo 'Install yarn'
+echo '--------------'
+brew install yarn
 
 echo 'Install mackup'
 echo '--------------'

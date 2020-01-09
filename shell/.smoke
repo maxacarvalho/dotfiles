@@ -1,0 +1,2 @@
+export smokePath="$MY_CODE_PATH/smoke"
+alias smoke="cd ${smokePath}"
