@@ -1,0 +1,2 @@
+export nickBasePath="$MY_CODE_PATH/nicksaude"
+alias nick="cd ${nickBasePath}"
