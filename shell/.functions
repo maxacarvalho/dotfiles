@@ -1,17 +1,3 @@
-# Switch PHP versions
-phpv() {
-    valet stop
-    brew unlink php@7.0 php@7.2 php@7.3 php
-    brew link --force --overwrite "$1"
-    valet start
-}
-
-alias php70="phpv php@7.0"
-alias php72="phpv php@7.2"
-alias php73="phpv php@7.3"
-alias php74="phpv php"
-
-
 # Create a new directory and enter it
 function mkd() {
    mkdir -p "$@" && cd "$@" || exit

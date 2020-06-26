@@ -1,1 +1,2 @@
 alias kooomo="cd $MY_CODE_PATH/kooomo"
+alias kmo="cd $MY_CODE_PATH/kooomo/docker && ./kmodocker $@"
