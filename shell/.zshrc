@@ -15,6 +15,13 @@ DEFAULT_USER=`whoami`
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git gitfast golang command-not-found docker docker-machine docker-compose npm node ansible laravel5 composer osx vagrant)
 
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
+
 source $ZSH/oh-my-zsh.sh
 
 # Load the shell dotfiles, and then some:
@@ -54,9 +61,25 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Enable the fuck
 eval $(thefuck --alias)
 
+# Alias hub
+eval "$(hub alias -s)"
+
+# Homestead
+function homestead() {
+    ( cd ~/Homestead && vagrant $* )
+}
+
 # Extra paths
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 export PATH=/usr/local/bin:$PATH
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/.yarn/bin:$PATH"
 export PATH="$HOME/Code/spark-installer:$PATH"
+
+# gcloud
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+
+# Laravel
+alias sail='bash vendor/bin/sail'
+

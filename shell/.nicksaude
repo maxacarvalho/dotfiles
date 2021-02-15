@@ -1,2 +1,16 @@
-export nickBasePath="$MY_CODE_PATH/nicksaude"
-alias nick="cd ${nickBasePath}"
+# Nick
+function nick() {
+    cd ~/Code/nicksaude
+}
+
+function nick-vessel() {
+    ( cd ~/Code/nicksaude && ./vessel $* )
+}
+
+function nick-git() {
+    ( cd ~/Code/nicksaude && git $* )
+}
+
+function nick-yarn() {
+    ( cd ~/Code/nicksaude && yarn $* )
+}
