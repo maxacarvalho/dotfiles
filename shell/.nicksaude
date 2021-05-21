@@ -1,16 +1,9 @@
 # Nick
 function nick() {
-    cd ~/Code/nicksaude
+    cd ~/Code/nicksaudelabs
 }
 
-function nick-vessel() {
-    ( cd ~/Code/nicksaude && ./vessel $* )
+function nickdev() {
+  (cd ~/Code/nicksaudelabs/api && bash nick-dev $*)
 }
 
-function nick-git() {
-    ( cd ~/Code/nicksaude && git $* )
-}
-
-function nick-yarn() {
-    ( cd ~/Code/nicksaude && yarn $* )
-}

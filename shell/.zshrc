@@ -26,7 +26,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Load the shell dotfiles, and then some:
 # * ~/.extra can be used for other settings you don’t want to commit.
-for file in ~/.dotfiles/shell/.{exports,aliases,functions,kooomo,smoke,nicksaude}; do
+for file in ~/.dotfiles/shell/.{exports,aliases,functions,linkedfinance,180smoke,nicksaude}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file"
 done
 
@@ -35,13 +35,7 @@ for file in ~/.dotfiles-custom/shell/.{exports,aliases,functions,zshrc}; do
 done
 unset file
 
-# Load rvm
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-
-export PATH="$PATH:$HOME/.rvm/bin"
-
 export PATH=$HOME/.dotfiles/bin:$PATH
-[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
 
 # Import ssh keys in keychain
 ssh-add -A 2>/dev/null;
@@ -50,10 +44,10 @@ ssh-add -A 2>/dev/null;
 export XDEBUG_CONFIG="idekey=mcarvalho"
 
 # Enable autosuggestions
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Enable syntax-highlighting
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Enable fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -61,25 +55,19 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Enable the fuck
 eval $(thefuck --alias)
 
-# Alias hub
-eval "$(hub alias -s)"
-
-# Homestead
-function homestead() {
-    ( cd ~/Homestead && vagrant $* )
-}
-
 # Extra paths
 export PATH="$HOME/.composer/vendor/bin:$PATH"
-export PATH=/usr/local/bin:$PATH
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/sbin:$PATH"
+export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/.yarn/bin:$PATH"
-export PATH="$HOME/Code/spark-installer:$PATH"
 
 # gcloud
-source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+#source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+#source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 
-# Laravel
-alias sail='bash vendor/bin/sail'
+# Local Dev Environment
+export LOCAL_DEV_CONFIG_PATH=/Users/maxacarvalho/.config/local-dev
 
+export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"

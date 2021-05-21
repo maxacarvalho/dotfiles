@@ -1,4 +1,0 @@
-alias kooomo="cd $MY_CODE_PATH/kooomo"
-function kmo() {
-    ( cd ~/Code/kooomo/Vagrant && vagrant $* )
-}

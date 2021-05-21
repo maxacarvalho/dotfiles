@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# Linked Finance
+function lkdf() {
+    cd ~/Code/linked-finance
+}
+
+function lfadmin() {
+  cd ~/Code/linked-finance/lf_environment/applications/admin-panel
+}
+function lfapi() {
+  cd ~/Code/linked-finance/lf_environment/applications/api
+}
+function lfrobot {
+  cd ~/Code/linked-finance/lf_environment/applications/lf-robot
+}
+function lfwordpress() {
+  cd ~/Code/linked-finance/lf_environment/applications/wordpress
+}
+
+function lkdf_ec2_connect() {
+  export AWS_PROFILE=linkedfinance
+
+  if [ -z $1 ]; then
+    echo "Usage: aws-session instance-id|opsworks:instance"
+    return;
+  fi
+
+  if [[ $1 == "vpn" ]]; then
+    aws ssm start-session --target i-0ad34610cf644ff21 "${@:2}"
+  fi
+
+  instanceid=$1
+
+  if ! [[ $instanceid == i-* ]]; then
+    instanceid=$(aws ec2 describe-instances --filters Name=tag:opsworks:instance,Values=$instanceid | grep -E "\"InstanceId\":\s+\"(i\-[a-f0-9]*)\"" | cut -d \" -f4)
+
+    if [ -z $instanceid ]; then
+      echo "Instance not found"
+      return
+    fi
+
+    echo $instanceid
+  fi
+
+  aws ssm start-session --target $instanceid "${@:2}"
+}
+
+function lfenv() {
+  (cd ~/Code/linked-finance/lf_environment && bash lf_env $*)
+}
