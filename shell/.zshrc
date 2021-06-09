@@ -1,3 +1,11 @@
+# Extra paths
+export PATH="$HOME/.composer/vendor/bin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/sbin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
+export PATH="$HOME/.yarn/bin:$PATH"
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -21,6 +29,8 @@ if type brew &>/dev/null; then
   autoload -Uz compinit
   compinit
 fi
+
+FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 
 source $ZSH/oh-my-zsh.sh
 
@@ -53,15 +63,9 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Enable the fuck
-eval $(thefuck --alias)
+eval $(/opt/homebrew/opt/thefuck/bin/thefuck --alias)
 
 # Extra paths
-export PATH="$HOME/.composer/vendor/bin:$PATH"
-export PATH="/opt/homebrew/bin:$PATH"
-export PATH="/opt/homebrew/sbin:$PATH"
-export PATH="/usr/local/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
-export PATH="$HOME/.yarn/bin:$PATH"
 
 # gcloud
 #source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
@@ -71,3 +75,6 @@ export PATH="$HOME/.yarn/bin:$PATH"
 export LOCAL_DEV_CONFIG_PATH=/Users/maxacarvalho/.config/local-dev
 
 export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init --path)"
+fi

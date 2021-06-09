@@ -4,6 +4,6 @@ function nick() {
 }
 
 function nickdev() {
-  (cd ~/Code/nicksaudelabs/api && bash nick-dev $*)
+  (cd ~/Code/nicksaudelabs/admin && bash nick-dev $*)
 }
 

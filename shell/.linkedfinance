@@ -1,21 +1,24 @@
 #!/bin/bash
 
+LF_HOME=/Users/maxacarvalho/Code/linked_finance
+LF_ENV_HOME=/Users/maxacarvalho/Code/linked_finance/lf-environment
+
 # Linked Finance
 function lkdf() {
-    cd ~/Code/linked-finance
+    cd $LF_HOME
 }
 
 function lfadmin() {
-  cd ~/Code/linked-finance/lf_environment/applications/admin-panel
+  cd $LF_ENV_HOME/applications/admin-panel
 }
 function lfapi() {
-  cd ~/Code/linked-finance/lf_environment/applications/api
+  cd $LF_ENV_HOME/applications/api
 }
 function lfrobot {
-  cd ~/Code/linked-finance/lf_environment/applications/lf-robot
+  cd $LF_ENV_HOME/applications/lf-robot
 }
 function lfwordpress() {
-  cd ~/Code/linked-finance/lf_environment/applications/wordpress
+  cd $LF_ENV_HOME/applications/wordpress
 }
 
 function lkdf_ec2_connect() {
@@ -47,5 +50,5 @@ function lkdf_ec2_connect() {
 }
 
 function lfenv() {
-  (cd ~/Code/linked-finance/lf_environment && bash lf_env $*)
+  (cd $LF_ENV_HOME && bash lf_env $*)
 }
